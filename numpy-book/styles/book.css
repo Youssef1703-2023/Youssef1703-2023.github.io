@@ -469,6 +469,53 @@ pre .mi, pre .mf { color: #ff9e64; }
   margin-left: 1.5mm;
 }
 
+/* ============ END-OF-LESSON SIGN-OFF ============ */
+.lesson-end {
+  margin-top: 12mm;
+  text-align: center;
+  page-break-inside: avoid;
+}
+.lesson-end-rule {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin-bottom: 5mm;
+}
+.lesson-end-rule .line { flex: 1; height: 0.75pt; background: var(--rule); }
+.lesson-end-rule .dot {
+  width: 2.2mm;
+  height: 2.2mm;
+  background: var(--accent);
+  transform: rotate(45deg);
+  flex: none;
+}
+.lesson-end-ar {
+  direction: rtl;
+  font-family: 'Plex Arabic', sans-serif;
+  font-weight: 600;
+  font-size: 13.5pt;
+  color: var(--accent);
+  line-height: 1.7;
+}
+.lesson-end-sub {
+  direction: rtl;
+  font-family: 'Plex Arabic', sans-serif;
+  font-weight: 400;
+  font-size: 10.8pt;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  margin-top: 1.5mm;
+}
+.lesson-end-en {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: 8.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #aab2bf;
+  margin-top: 5mm;
+}
+
 /* ---------- tables ---------- */
 table {
   width: 100%;

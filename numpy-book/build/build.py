@@ -43,6 +43,35 @@ MD_EXTENSIONS = [
 MD_EXT_CONFIG = {"codehilite": {"guess_lang": False}}
 
 
+AR_ORDINALS = {
+    1: "الأول", 2: "التاني", 3: "التالت", 4: "الرابع", 5: "الخامس",
+    6: "السادس", 7: "السابع", 8: "التامن", 9: "التاسع", 10: "العاشر",
+    11: "الحادي عشر", 12: "التاني عشر", 13: "التالت عشر", 14: "الرابع عشر",
+    15: "الخامس عشر", 16: "السادس عشر", 17: "السابع عشر", 18: "التامن عشر",
+    19: "التاسع عشر", 20: "العشرين", 21: "الواحد وعشرين", 22: "الاتنين وعشرين",
+    23: "التلاتة وعشرين", 24: "الأربعة وعشرين", 25: "الخمسة وعشرين",
+    26: "الستة وعشرين", 27: "السبعة وعشرين", 28: "التمانية وعشرين",
+    29: "التسعة وعشرين", 30: "التلاتين",
+}
+
+
+def render_lesson_end(i):
+    """The sign-off that closes every lesson."""
+    ordinal = AR_ORDINALS.get(i, f"رقم {i}")
+    return f"""
+      <div class="lesson-end">
+        <div class="lesson-end-rule">
+          <span class="line"></span><span class="dot"></span><span class="line"></span>
+        </div>
+        <div class="lesson-end-ar">وكده نكون خلّصنا الدرس {ordinal} بحمد الله</div>
+        <div class="lesson-end-sub">
+          راجع الخلاصة اللي فوق مرة كمان، خُد بريك صغير &mdash; ونشوفك في اللي بعده.
+        </div>
+        <div class="lesson-end-en">End of Lesson {i:02d}</div>
+      </div>
+    """
+
+
 def load_lessons():
     files = sorted(glob.glob(os.path.join(CONTENT_DIR, "*.md")))
     if not files:
@@ -126,6 +155,7 @@ def render_lesson(i, ch):
         <h1 class="lesson-title">{ch['title']}</h1>
       </div>
       <div class="lesson-body">{ch['html']}</div>
+      {render_lesson_end(i)}
     </section>
     """
 
