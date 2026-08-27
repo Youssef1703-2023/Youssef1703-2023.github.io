@@ -2,19 +2,25 @@
 
 A real explained textbook built lesson-by-lesson from the NumPy YouTube
 course by **JoeTech** — not condensed bullet-point notes. Each lesson is a
-full write-up (in English): concept explained in prose, worked code
-examples, callouts for gotchas/tips, and a "Key Takeaways" box at the end.
+full write-up in English, followed section by section by an **Egyptian
+Arabic** explanation in its own panel: concept explained in prose, code
+walked through line by line, callouts for gotchas/tips, and both an
+English "Key Takeaways" and an Arabic "الخلاصة" box at the end.
 Modern textbook design: full-bleed pages, Sora headings, Source Serif 4
-body text, dark syntax-highlighted code blocks.
+body text, IBM Plex Sans Arabic for the RTL panels, dark
+syntax-highlighted code blocks.
 
 ## Workflow
 
-1. You send a summary of one video from the course (any language).
+1. You send a summary of one video from the course.
 2. Claude expands it into a full lesson — explaining the *why*, not just
-   the *what*, using its own NumPy knowledge to fill gaps and add
-   examples the summary didn't spell out — and adds it as a new file in
-   `content/chapters/`.
+   the *what*, using its own NumPy knowledge to fill gaps — and adds it
+   as a new file in `content/chapters/`.
 3. Rebuild the PDF and review.
+
+**Scope rule:** a lesson only covers what that video actually covered. No
+code or concepts from later videos get introduced early, even when they
+would make the explanation richer.
 
 ## Structure
 
@@ -56,6 +62,32 @@ Lesson content in Markdown. Supports headings (`##`, `###`), **bold**,
   <ul>
     <li>One line per core idea from the lesson.</li>
   </ul>
+</div>
+```
+
+### Arabic explanation blocks
+
+English is the main text; each section is followed by an Egyptian-Arabic
+explanation in an RTL panel. Three variants, all needing `markdown="1"`
+and blank lines around the inner Markdown:
+
+```markdown
+<div class="ar" markdown="1">
+
+شرح القسم بالعربي — الليبل بيطلع تلقائي "بالعربي".
+
+</div>
+
+<div class="ar code-notes" markdown="1">
+
+- `import numpy as np` — شرح السطر ده.
+
+</div>
+
+<div class="ar summary" markdown="1">
+
+- نقطة من نقط الخلاصة.
+
 </div>
 ```
 

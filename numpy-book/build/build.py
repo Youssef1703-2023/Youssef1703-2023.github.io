@@ -32,7 +32,14 @@ COURSE_CREDIT = "JoeTech"
 COMPILER = "Youssef"
 COMPILED_YEAR = "2026"
 
-MD_EXTENSIONS = ["fenced_code", "codehilite", "tables", "sane_lists", "attr_list"]
+MD_EXTENSIONS = [
+    "fenced_code",
+    "codehilite",
+    "tables",
+    "sane_lists",
+    "attr_list",
+    "md_in_html",
+]
 MD_EXT_CONFIG = {"codehilite": {"guess_lang": False}}
 
 
@@ -108,7 +115,6 @@ def render_lesson(i, ch):
         f'style="position:absolute; top:0; left:0; color:#ffffff; font-size:6pt;">'
         f"LESSONMARK{i:03d}</span>"
     )
-    source_line = f'<div class="lesson-source">{ch["source"]}</div>' if ch.get("source") else ""
     return f"""
     <section class="page lesson">
       {marker}
@@ -118,7 +124,6 @@ def render_lesson(i, ch):
           <span class="label">Lesson {i:02d}</span>
         </div>
         <h1 class="lesson-title">{ch['title']}</h1>
-        {source_line}
       </div>
       <div class="lesson-body">{ch['html']}</div>
     </section>

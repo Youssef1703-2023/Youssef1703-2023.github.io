@@ -46,6 +46,30 @@
   src: url('../assets/fonts/sourceserif-italic.ttf') format('truetype');
 }
 @font-face {
+  font-family: 'Plex Arabic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/plexarabic-regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Plex Arabic';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/plexarabic-medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Plex Arabic';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/plexarabic-semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Plex Arabic';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/plexarabic-bold.ttf') format('truetype');
+}
+@font-face {
   font-family: 'Fira Code';
   font-style: normal;
   font-weight: 400;
@@ -366,6 +390,7 @@ pre .mi, pre .mf { color: #ff9e64; }
   padding: 5mm 6mm;
   background: var(--panel);
   border-radius: 6px;
+  page-break-inside: avoid;
 }
 .takeaways .box-label {
   font-family: 'Sora', sans-serif;
@@ -378,6 +403,71 @@ pre .mi, pre .mf { color: #ff9e64; }
 }
 .takeaways ul { margin: 0; padding-left: 5mm; }
 .takeaways li { margin-bottom: 2mm; }
+
+/* ============ ARABIC EXPLANATION BLOCKS ============ */
+.ar {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Plex Arabic', sans-serif;
+  font-size: 11.4pt;
+  line-height: 1.95;
+  color: var(--ink);
+  background: #f7f9fc;
+  border-right: 3pt solid var(--accent-soft);
+  border-radius: 4px;
+  padding: 4.5mm 5.5mm 4mm 5.5mm;
+  margin: 5mm 0 6mm 0;
+  page-break-inside: avoid;
+}
+.ar::before {
+  content: "بالعربي";
+  display: block;
+  font-family: 'Plex Arabic', sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  color: var(--accent);
+  margin-bottom: 2.5mm;
+  letter-spacing: 0;
+}
+.ar p { margin: 0 0 2.6mm 0; text-align: right; }
+.ar p:last-child { margin-bottom: 0; }
+.ar ul, .ar ol {
+  padding-right: 5.5mm;
+  padding-left: 0;
+  margin-bottom: 2.6mm;
+}
+.ar li { margin-bottom: 1.8mm; }
+.ar strong { font-weight: 600; color: var(--accent); }
+.ar code {
+  direction: ltr;
+  display: inline-block;
+  font-size: 9.2pt;
+  background: #e8edf7;
+}
+
+/* Arabic wrap-up box at the end of a lesson */
+.ar.summary {
+  background: var(--accent-tint);
+  border-right-color: var(--accent);
+  margin-top: 6mm;
+}
+.ar.summary::before { content: "الخلاصة في سطور"; }
+
+/* Arabic walkthrough attached under a code block */
+.ar.code-notes {
+  margin-top: -3mm;
+  background: #f4f6fa;
+  border-right-color: var(--ink-soft);
+}
+.ar.code-notes::before { content: "شرح الكود سطر سطر"; color: var(--ink-soft); }
+.ar.code-notes li { margin-bottom: 3mm; }
+.ar.code-notes li > code:first-child {
+  background: var(--code-bg);
+  color: #cfd6e4;
+  padding: 0.6mm 2mm;
+  border-radius: 3px;
+  margin-left: 1.5mm;
+}
 
 /* ---------- tables ---------- */
 table {
