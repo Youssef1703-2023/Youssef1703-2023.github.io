@@ -1,9 +1,20 @@
 # NumPy Book
 
-A personal study companion built from summaries of the NumPy YouTube course
-by **JoeTech**. Designed like a small academic textbook: serif typography
-(Playfair Display + EB Garamond), a formal title page, a table of contents,
-drop caps on chapter openers, and styled code/notes/tips boxes.
+A real explained textbook built lesson-by-lesson from the NumPy YouTube
+course by **JoeTech** — not condensed bullet-point notes. Each lesson is a
+full write-up (in English): concept explained in prose, worked code
+examples, callouts for gotchas/tips, and a "Key Takeaways" box at the end.
+Modern textbook design: full-bleed pages, Sora headings, Source Serif 4
+body text, dark syntax-highlighted code blocks.
+
+## Workflow
+
+1. You send a summary of one video from the course (any language).
+2. Claude expands it into a full lesson — explaining the *why*, not just
+   the *what*, using its own NumPy knowledge to fill gaps and add
+   examples the summary didn't spell out — and adds it as a new file in
+   `content/chapters/`.
+3. Rebuild the PDF and review.
 
 ## Structure
 
@@ -13,26 +24,38 @@ numpy-book/
   styles/book.css        the book's visual design
   assets/fonts/          embedded font files (no internet needed to build)
   build/build.py         builds content/chapters/*.md -> output/NumPy-Book.pdf
-  output/                generated PDF (git-ignored except on request)
+  output/                generated PDF
 ```
 
-## Adding a new chapter
+## Adding a new lesson
 
 Create `content/chapters/NN-short-title.md` with frontmatter:
 
 ```markdown
 ---
-title: Chapter title shown in the book
+title: Lesson title shown in the book
 order: 2
 source: "JoeTech, NumPy Course, Video 2 — Broadcasting"
 ---
 
-Chapter content in Markdown. Supports headings (`##`, `###`), **bold**,
+Lesson content in Markdown. Supports headings (`##`, `###`), **bold**,
 *italic*, fenced code blocks, tables, and lists.
 
 <div class="box">
-  <div class="box-label">Note</div>
-  <p>Use this for asides worth calling out.</p>
+  <div class="box-label">Tip</div>
+  <p>Use this for a positive aside worth calling out.</p>
+</div>
+
+<div class="box warn">
+  <div class="box-label">Watch out</div>
+  <p>Use this (amber) for gotchas and common mistakes.</p>
+</div>
+
+<div class="takeaways">
+  <div class="box-label">Key takeaways</div>
+  <ul>
+    <li>One line per core idea from the lesson.</li>
+  </ul>
 </div>
 ```
 
@@ -43,5 +66,5 @@ python3 build/build.py
 ```
 
 Output: `output/NumPy-Book.pdf`. The build runs two passes — the first
-measures which physical page each chapter starts on, the second fills in
+measures which physical page each lesson starts on, the second fills in
 real page numbers in the table of contents.
